@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestionar Provas</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<h1>Llista de provas</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Descripcio</th>
+        <th>tipus</th>
+        <th>Data</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Prova: ${prova}">
+        <td th:text="${prova.nom}"></td>
+        <td th:text="${nadador.nom}"></td>
+        <td th:text="${nadador.pais}"></td>
+        <td th:text="${nadador.edat}"></td>
+        <td th:text="${nadador.genere}"></td>
+        <td><a th:href="@{/nadador/update/{nom}(nom=${nadador.nom})}">Edita</a>
+        </td>
+        <td><a th:href="@{/nadador/delete/{nom}(nom=${nadador.nom})}">Esborra</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="add">Afegeix nadador</a>
+</body>
+</html>
