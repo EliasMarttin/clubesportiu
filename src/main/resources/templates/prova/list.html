@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Llista de provas</h1>
-<table>
+<table class="table table-dark">
     <thead>
     <tr>
         <th>Nom</th>
@@ -20,18 +20,17 @@
     </thead>
     <tbody>
     <tr th:each="Prova: ${prova}">
-        <td th:text="${prova.nom}"></td>
-        <td th:text="${nadador.nom}"></td>
-        <td th:text="${nadador.pais}"></td>
-        <td th:text="${nadador.edat}"></td>
-        <td th:text="${nadador.genere}"></td>
-        <td><a th:href="@{/nadador/update/{nom}(nom=${nadador.nom})}">Edita</a>
+        <td th:text="${Prova.nom}"></td>
+        <td th:text="${Prova.descripcio}"></td>
+        <td th:text="${Prova.tipus}"></td>
+        <td th:text="${Prova.data}"></td>
+        <td><a th:href="@{/prova/update/{nom}(nom=${Prova.nom})}">Edita</a>
         </td>
-        <td><a th:href="@{/nadador/delete/{nom}(nom=${nadador.nom})}">Esborra</a>
+        <td><a th:href="@{/prova/delete/{nom}(nom=${Prova.nom})}">Esborra</a>
         </td>
     </tr>
     </tbody>
 </table>
-<a href="add">Afegeix nadador</a>
+<a href="add">Afegeix prova</a>
 </body>
 </html>
