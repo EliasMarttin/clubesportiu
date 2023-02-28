@@ -52,6 +52,7 @@ public class NadadorController {
     public String editNadador(Model model, @PathVariable String nom) {
         model.addAttribute("nadador", nadadorDao.getNadador(nom));
         return "nadador/update";
+
     }
     @RequestMapping(value="/update", method = RequestMethod.POST)
     public String processUpdateSubmit(
