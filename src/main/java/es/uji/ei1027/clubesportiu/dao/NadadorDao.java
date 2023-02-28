@@ -32,6 +32,9 @@ public class NadadorDao {
     public void deleteNadador(Nadador nadador) {
         jdbcTemplate.update("DELETE FROM Nadador WHERE nom =?",nadador.getNom());
     }
+    public void deleteNadadorByName(String nom) {
+        jdbcTemplate.update("DELETE FROM Nadador WHERE nom =?",nom);
+    }
 
     /* Actualitza els atributs del nadador
        (excepte el nom, que és la clau primària) */

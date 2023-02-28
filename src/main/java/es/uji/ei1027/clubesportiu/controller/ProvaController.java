@@ -23,4 +23,5 @@ public class ProvaController {
         model.addAttribute("prova",provaDao.getProvas());
         return "prova/list";
     }
+
 }
