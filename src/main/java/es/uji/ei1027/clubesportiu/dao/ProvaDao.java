@@ -43,7 +43,6 @@ public class ProvaDao {
         }
     }
 
-    /* Obté tots els nadadors. Torna una llista buida si no n'hi ha cap. */
     public List<Prova> getProvas() {
         try {
             return jdbcTemplate.query("SELECT * from Prova", new ProvaRowMapper());

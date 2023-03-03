@@ -64,4 +64,18 @@ public class ClassificacioDao {
         }
     }
 
+
+    //Obtener la clasificacion
+    public List<Classificacio> getClassificacioProva(String nomProva) {
+        try {
+            return this.jdbcTemplate.query(
+                    "SELECT * FROM classificacio WHERE nom_prova=?",
+                    new ClassificacioRowMapper(), nomProva);
+        }
+        catch(EmptyResultDataAccessException e) {
+            return new ArrayList<Classificacio>();
+        }
+    }
+
+
 }

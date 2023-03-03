@@ -54,16 +54,6 @@ public class NadadorController {
         return "nadador/update";
 
     }
-    @RequestMapping(value="/update", method = RequestMethod.POST)
-    public String processUpdateSubmit(
-            @ModelAttribute("nadador") Nadador nadador,
-            BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "nadador/update";
-        nadadorDao.updateNadador(nadador);
-        return "redirect:list";
-    }
-
     //DELETE ZONE
     @RequestMapping(value="/delete/{nom}")
     public String processDelete(@PathVariable String nom) {
