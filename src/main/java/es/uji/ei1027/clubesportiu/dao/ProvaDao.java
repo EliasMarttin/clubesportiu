@@ -24,11 +24,14 @@ public class ProvaDao {
     public void deleteProva(Prova prova) {
         jdbcTemplate.update("DELETE FROM Prova WHERE nom =?",prova.getNom());
     }
+    public void deleteProvaByName(String name) {
+        jdbcTemplate.update("DELETE FROM Prova WHERE nom=?",name);
+    }
 
 
     public void updateProva(Prova prova) {
-        jdbcTemplate.update("UPDATE Prova SET descripcio=?,  tipus=?, data =?, WHERE nom =?",
-                prova.getDescripcio(),prova.getTipus(),prova.getData());
+        jdbcTemplate.update("UPDATE Prova SET descripcio=?,  tipus=?, data=? WHERE nom =?",
+                prova.getDescripcio(),prova.getTipus(),prova.getData(),prova.getNom());
     }
 
     public Prova getProva(String nomProva) {

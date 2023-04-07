@@ -11,25 +11,31 @@
 <form action="#" th:action="@{/nadador/update}"
       th:object="${nadador}" method="post">
   <table>
-    <tr>
+  <tr>
       <td><label>Nom</label></td>
-      <td><input type="text" th:field="*{nom}" /></td>
+      <td><input type="text" th:field="*{nom}" readonly="readonly" maxlength="50" /></td>
     </tr>
     <tr>
       <td><label>Num. Federat</label></td>
-      <td><input type="text" th:field="*{numFederat}" /></td>
+      <td><input type="text" th:field="*{numFederat}" maxlength="10"/></td>
     </tr>
     <tr>
       <td><label>Pais</label></td>
-      <td><input type="text" th:field="*{pais}" /></td>
+      <td><input type="text" th:field="*{pais}" maxlength="20" /></td>
     </tr>
     <tr>
       <td><label>Edat</label></td>
       <td><input type="number" th:field="*{edat}" /></td>
     </tr>
     <tr>
-      <td><label>Genere</label></td>
-      <td><input type="text" th:field="*{genere}" /></td>
+      <td> <select class="form_control" type="text" th:field="*{genere}">
+        <!--option value="No seleccionat">Selecciona el gènere</option-->
+        <option th:each="gendervalue : ${genderList}" ①
+                th:value="${gendervalue}" ②
+                th:text="${gendervalue}"></option> ③
+      </select>
+      </td>
+      <td th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}"></td>
     </tr>
     <tr>
       <td colspan="2"><input type="submit" value="UPDATE nadador" /></td>

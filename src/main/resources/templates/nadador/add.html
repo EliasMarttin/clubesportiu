@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Crear nou nadador</title>
+    <title>Crear nou Nadador</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/natacio.css"
+          th:href="@{/css/natacio.css}"/>
+
 </head>
 <body>
 <h2>Nou nadador</h2>
@@ -13,23 +14,32 @@
     <table>
         <tr>
             <td><label>Nom</label></td>
-            <td><input type="text" th:field="*{nom}" /></td>
+            <td><input type="text" th:field="*{nom}" placeholder="Nom i cognoms" maxlength="50" th:class="${#fields.hasErrors('edat')} ? needcorrection"/></td>
+            <td th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="error"/>
+
         </tr>
         <tr>
             <td><label>Num. Federat</label></td>
-            <td><input type="text" th:field="*{numFederat}" /></td>
+            <td><input type="text" th:field="*{numFederat}" maxlength="10"  th:class="${#fields.hasErrors('edat')} ? needcorrection"/></td>
         </tr>
         <tr>
             <td><label>Pais</label></td>
-            <td><input type="text" th:field="*{pais}" /></td>
+            <td><input type="text" th:field="*{pais}" maxlength="20"  th:class="${#fields.hasErrors('edat')} ? needcorrection"/></td>
         </tr>
         <tr>
             <td><label>Edat</label></td>
-            <td><input type="number" th:field="*{edat}" /></td>
+            <td><input type="number" th:field="*{edat}" th:class="${#fields.hasErrors('edat')} ? needcorrection"/></td>
+            <td th:if="${#fields.hasErrors('edat')}" th:errors="*{edat}" class="error"/>
         </tr>
         <tr>
-            <td><label>Genere</label></td>
-            <td><input type="text" th:field="*{genere}" /></td>
+            <td><label>Gènere</label></td>
+            <td><select class="form_control" type="text" th:field="*{genere}" th:class="${#fields.hasErrors('edat')} ? needcorrection" >
+                <option value="No seleccionat">Selecciona el gènere</option>
+                <option value="Femeni">Femeni</option>
+                <option value="Masculi">Masculi</option>
+            </select>
+            </td>
+            <td th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" class="error"/>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Afegeix nadador" /></td>
