@@ -24,8 +24,8 @@ public class UserController {
     public String listSocis(HttpSession session, Model model) {
         if (session.getAttribute("user") == null)
         {
-            session.setAttribute("nexturl","/user/list");
             model.addAttribute("user", new UserDetails());
+            session.setAttribute("nexturl","/user/list");
             return "login";
         }
         model.addAttribute("users", userDao.listAllUsers());

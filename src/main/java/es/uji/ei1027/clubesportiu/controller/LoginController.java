@@ -24,6 +24,7 @@ class UserValidator implements Validator {
     @Override
     public void validate(Object obj, Errors errors) {
         UserDetails userDetails = (UserDetails) obj;
+
         if(userDetails.getUsername().trim().equals(""))
             errors.rejectValue("username", "obligatori",
                     "Cal introduir un valor");
@@ -59,13 +60,13 @@ public class LoginController {
             bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta");
             return "login";
         }
-       /* if(session.getAttribute("nexturl") != null ) {
-            return (String) session.getAttribute( "nexturl");
-        }*/
         // Autenticats correctament.
         // Guardem les dades de l'usuari autenticat a la sessió
         session.setAttribute("user", user);
+        if(session.getAttribute("nexturl") != null ) {
 
+            return "redirect:"+ (String) session.getAttribute("nexturl");
+        }
         // Torna a la pàgina principal
         return "redirect:/";
     }
